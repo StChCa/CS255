@@ -58,5 +58,29 @@ public class CircLinkedUnbdQueue<T> implements UnboundedQueueInterface<T>{
 		}
 		
 	}
+	
+	  public String toString() {
+		  String retString = "";
+		  String addString = "";
+		  //set currNode as the front of the queue
+		  LLNode<T> currNode = rear.getLink();
+		  
+		  if (isEmpty())
+			  return "Queue is Empty";
+		  
+		  // CurrNode starts as the front of the queue, then loops through getting the next link each time until
+		  // the currNode == rear.  When currNode==rear we have iterated through the entire queue and added info to the
+		  // retString for each link.
+		  do {
+			  addString = (String) currNode.getInfo();
+			  currNode = currNode.getLink();
+			  retString += addString + ", ";
+		  } while (currNode != rear);
+		  
+		  // The above loop adds front through rear -1 so now I add rear to complete the toString();
+		  retString += rear.getInfo();
+		  
+		  return retString;
+	  }
 
 }
