@@ -177,11 +177,13 @@ public class ArrayUnsortedList<T> implements ListInterface<T>
 	  return counter;
   }
   
-  public void removeAll(T target) {
+  public int removeAll(T target) {
 	  int loop = howMany(target);
-	  for (int x = 0; x < loop; x++) {
+	  int x = 0;
+	  for (x=0; x < loop; x++) {
 		  //location=0;
 		  remove(target);
 	  }
+	  return x;
   }
 }

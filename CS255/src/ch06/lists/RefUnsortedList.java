@@ -145,4 +145,37 @@ public class RefUnsortedList<T> implements ListInterface<T>
       currentPos = currentPos.getLink();
     return next;
   }
+  
+  public int howMany(T target){
+	  int counter = 0;
+
+	  find(target);    
+	    if (found)
+	    {
+	    	counter ++;
+	    	try{
+		    	do {
+		    		location= location.getLink();
+		    		if(location.getInfo() == target) {
+		    			counter++;	    		
+		    		}
+		    	}
+		    	while(location.getLink() != null);
+	    	} catch (Exception e){
+	    		return counter;
+	    	}
+	    }
+  
+	  return counter;
+  }
+  
+  public int removeAll(T target){
+	  int loop = howMany(target);
+	  int x = 0;
+	  for (x=0; x < loop; x++) {
+		  //location=0;
+		  remove(target);
+	  }
+	  return x;
+  }
 }
