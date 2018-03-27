@@ -53,6 +53,36 @@ public class ArraySortedList<T> extends ArrayUnsortedList<T>
     list[location] = element;
     numElements++;
   }
+  
+  public void addV2(T element)
+  // Precondition:  element is Comparable.
+  //  
+  // Adds element to this list.
+  {  
+	    T listElement;      
+	    int location = numElements;
+	 
+	    if (location == list.length)
+	      enlarge();
+
+	    while (location > 0)
+	    {
+	      listElement = (T)list[location-1];
+	      if (((Comparable)listElement).compareTo(element) > 0) {  // list element < move it over
+	    	  System.out.println(((Comparable)listElement).compareTo(element));
+	    	  location--;
+	    	  list[location+1] = list[location];
+	      }
+	      else{
+	    	// list element >= add element	
+	    	  break;
+	      }   
+	    } 
+	    
+  	    list[location] = element;
+	    numElements++;
+	  
+  }
 
   public boolean remove (T element)
   // Removes an element e from this list such that e.equals(element)
