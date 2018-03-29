@@ -118,13 +118,33 @@ public int size() {
 public void add(String element) {
 	int prevLoc;
 	int currLoc;
+	int newLoc;
 	
 	String currElement;
 	
 	currLoc = list;
 	prevLoc = NUL;
 	
-	//While
+	while(currLoc != NUL) {
+		if(nodes[currLoc].info.compareTo(element) < 0 ) {
+			prevLoc = currLoc;
+			currLoc = nodes[currLoc].next;
+		}
+		else
+			break;
+	}
+	
+	newLoc = getNode();
+	nodes[newLoc].info = element;
+	
+	nodes[newLoc].next = currLoc;
+	
+	if (prevLoc == NUL)
+		list = newLoc;
+	else
+		nodes[prevLoc].next = newLoc;
+	
+	numElements++;
 }
 
 @Override
@@ -147,7 +167,9 @@ public void reset() {
 @Override
 public String getNext() {
 	// TODO Auto-generated method stub
-	return "";
+	String temp = nodes[currentPos].info;
+	currentPos = nodes[currentPos].next;
+	return temp;
 }
 
 }

@@ -69,7 +69,7 @@ public class ArraySortedList<T> extends ArrayUnsortedList<T>
 	    {
 	      listElement = (T)list[location-1];
 	      if (((Comparable)listElement).compareTo(element) > 0) {  // list element < move it over
-	    	  System.out.println(((Comparable)listElement).compareTo(element));
+	    	  //System.out.println(((Comparable)listElement).compareTo(element));
 	    	  location--;
 	    	  list[location+1] = list[location];
 	      }

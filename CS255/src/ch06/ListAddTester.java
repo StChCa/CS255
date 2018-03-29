@@ -27,8 +27,9 @@ public class ListAddTester {
 		
 		ArraySortedList<Integer> l1 = new ArraySortedList<Integer>();
 		
+		// this tests the expansion and see if the add method still works when we extend
 //		for(int x = 0; x<109;x++)
-//			l1.add(2);
+//			l1.addV2(2);
 		
 		l1.addV2(1);
 		System.out.println(l1.toString());
@@ -36,6 +37,7 @@ public class ListAddTester {
 		l1.addV2(2);
 		l1.addV2(3);
 		l1.addV2(1);
+		System.out.println(l1.get(1));
 		
 		System.out.println(l1.toString());
 	}

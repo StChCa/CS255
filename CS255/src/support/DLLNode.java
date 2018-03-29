@@ -27,6 +27,10 @@ public class DLLNode<T> extends LLNode<T>
   {
     return back;
   }
+
+public Object getNextNode() {
+	return this.getLink();
+}
 }
  
  
