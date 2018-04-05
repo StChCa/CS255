@@ -18,14 +18,25 @@ public class DRefUnsortedList<T> implements ListInterface<T>{
 		// TODO Auto-generated method stub
 		return numElements;
 	}
+	
+	public void find(T element) {
+		location = list;
+		found = false;
+		while(location != null) {
+			if(location.getInfo().equals(element)) {
+				found = true;
+			}
+			location = (DLLNode<T>) location.getNextNode();
+		}
+	}
 
 	@Override
 	public void add(T element) {
 		DLLNode<T> newNode = new DLLNode<T>(element);
 		//Below from class not implemented in my dllnode
-		//newNode.setNextNode(list);
-		//if(list != null)
-			//list.setPrevNode(newNode);
+		newNode.setLink(list);
+		if(list != null)
+			list.setPrevNode(newNode);
 		list = newNode;
 		numElements++;
 		
@@ -33,7 +44,23 @@ public class DRefUnsortedList<T> implements ListInterface<T>{
 
 	@Override
 	public boolean remove(T element) {
-		// TODO Auto-generated method stub
+		find(element);
+		
+		if (found) {
+			if(location.getPrevNode() != null) {
+				location.getPrevNode().setLink(location.getLink());
+				((DLLNode<T>) location.getLink()).setPrevNode(location.getPrevNode());
+				location.reset();
+			}
+			else {
+				if(location.getLink() != null) {
+					location.getNextNode().setPrevNode(location.getPrevNode());
+				}
+				list = location.getNextNode();
+				location.reset();
+			}
+		}
+		
 		return false;
 	}
 

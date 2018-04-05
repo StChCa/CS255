@@ -13,7 +13,7 @@ public class DListTester {
 		dlist.add("w");
 		System.out.println(dlist.size());
 		
-		//System.out.println(dlist.getNext());
+		System.out.println(dlist.remove("l"));
 		
 	}
 

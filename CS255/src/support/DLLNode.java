@@ -6,31 +6,32 @@
 
 package support;
 
-public class DLLNode<T> extends LLNode<T> 
-{
-  private DLLNode<T> back;
-  
-  public DLLNode(T info)
-  {
-    super(info);
-    back = null;
-  }
- 
-  public void setBack(DLLNode<T> back)
-  // Sets back link of this DLLNode.
-  {
-    this.back = back;
-  }
+public class DLLNode<T> extends LLNode<T> {
+	private DLLNode<T> prevNode;
 
-  public DLLNode getBack()
-  // Returns back link of this DLLNode.
-  {
-    return back;
-  }
+	public DLLNode(T info) {
+		super(info);
+		prevNode = null;
+	}
 
-public Object getNextNode() {
-	return this.getLink();
+	public void setPrevNode(DLLNode<T> back)
+	// Sets back link of this DLLNode.
+	{
+		this.prevNode = back;
+	}
+
+	public DLLNode<T> getPrevNode()
+	// Returns back link of this DLLNode.
+	{
+		return prevNode;
+	}
+
+	public DLLNode<T> getNextNode() {
+		return (DLLNode<T>) this.getLink();
+	}
+
+	public void reset() {
+		// TODO Auto-generated method stub
+		
+	}
 }
-}
- 
- 
