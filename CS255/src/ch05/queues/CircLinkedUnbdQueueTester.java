@@ -44,6 +44,8 @@ public class CircLinkedUnbdQueueTester {
 		q1.dequeue();
 		//Uncomment line below to test make que empty 
 		//q1.dequeue();
+		
+		System.out.println(q1.toString());
 	}
 
 }
