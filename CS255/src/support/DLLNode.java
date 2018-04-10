@@ -1,37 +1,53 @@
 //----------------------------------------------------------------------------
-// DLLNode.java              by Dale/Joyce/Weems                     Chapter 7
+// DLLNode.java              by Weaver                     Chapter 7
 //
 // Implements <T> nodes for a doubly linked list.
 //----------------------------------------------------------------------------
 
 package support;
 
-public class DLLNode<T> extends LLNode<T> {
+public class DLLNode<T>
+{
+	private T info;
+	private DLLNode<T> nextNode;
 	private DLLNode<T> prevNode;
 
-	public DLLNode(T info) {
-		super(info);
+	public DLLNode(T info)
+	{
+		this.info = info;
+		nextNode = null;
 		prevNode = null;
 	}
 
-	public void setPrevNode(DLLNode<T> back)
-	// Sets back link of this DLLNode.
-	{
-		this.prevNode = back;
+	public T getInfo() {
+		return info;
 	}
 
-	public DLLNode<T> getPrevNode()
-	// Returns back link of this DLLNode.
-	{
-		return prevNode;
+	public void setInfo(T info) {
+		this.info = info;
 	}
 
 	public DLLNode<T> getNextNode() {
-		return (DLLNode<T>) this.getLink();
+		return nextNode;
 	}
 
-	public void reset() {
-		// TODO Auto-generated method stub
-		
+	public void setNextNode(DLLNode<T> nextNode) {
+		this.nextNode = nextNode;
 	}
+
+	public DLLNode<T> getPrevNode() {
+		return prevNode;
+	}
+
+	public void setPrevNode(DLLNode<T> prevNode) {
+		this.prevNode = prevNode;
+	}
+	
+	public void reset() {
+		nextNode = null;
+		prevNode = null;
+	}
+
+
 }
+
