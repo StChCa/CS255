@@ -84,20 +84,42 @@ public class ArrayRefSortedStringList implements ListInterface<String> {
 	// Removes an element e from this list such that e.equals(element)
 	// and returns true; if no such element exists, returns false
 	{
-		int hold; // To remember removed node index
+//		int hold; // To remember removed node index
+//		find(element);
+//		if (found) {
+//			hold = location;
+//			if (list == location) {
+//				list = nodes[list].next; // remove first node
+//				freeNode(location);
+//			}
+//			else
+//				nodes[previous].next = nodes[location].next;
+//			freeNode(hold);
+//			numElements--;
+//		}
+//		return found;
+		
+		int hold;
+		
 		find(element);
-		if (found) {
+		if(found) {
 			hold = location;
-			if (list == location) {
-				list = nodes[list].next; // remove first node
-				freeNode(location);
+			if(hold == list) {
+				// if its the first item
+				list = nodes[hold].next;
+				freeNode(hold);
+				numElements--;
+				return true;
+			} else {
+				//else its not the first
+				nodes[previous].next = nodes[hold].next;
+				location = nodes[hold].next;
+				freeNode(hold);
+				numElements --;
+				return true;
 			}
-			else
-				nodes[previous].next = nodes[location].next;
-			freeNode(hold);
-			numElements--;
 		}
-		return found;
+		return false;
 	}
 
 	private void find(String element) {
@@ -105,13 +127,14 @@ public class ArrayRefSortedStringList implements ListInterface<String> {
 		reset();
 		found = false;
 		previous = list;
-		while (location != NUL) {
-			if (nodes[location].info.equals(element)) {
+		while (currentPos != NUL) {
+			if (nodes[currentPos].info.equals(element)) {
+				location = currentPos;
 				found = true;
 				return;
 			} else {
-				previous = location;
-				location = nodes[location].next;
+				previous = currentPos;
+				currentPos = nodes[currentPos].next;
 			}
 		}
 	}
@@ -191,14 +214,5 @@ public class ArrayRefSortedStringList implements ListInterface<String> {
 
 		}
 		return retString;
-	}
-
-	public void info() {
-		System.out.println("List: " + list);
-		System.out.println("free: " + free);
-		System.out.println("NumEle: " + numElements);
-		System.out.println("currPos: " + currentPos);
-		System.out.println("location: " + location);
-		System.out.println("previous: " + previous);
 	}
 }
