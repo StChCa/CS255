@@ -6,7 +6,8 @@
 
 package support;
 
-public class BSTNode<T extends Comparable<T>>
+public class BSTNode<T>
+// public class BSTNode<T extends Comparable<T>>
 {
   // Used to hold references to BST nodes for the linked implementation
   protected T info;                // The info in a BST node
