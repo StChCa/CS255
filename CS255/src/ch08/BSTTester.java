@@ -10,6 +10,14 @@ public class BSTTester {
 		
 		bst.add("h");
 		bst.add("e");
+		bst.add("g");
+		
+		System.out.println(bst.size());
+		
+		System.out.println(bst.contains("i"));
+		System.out.println(bst.contains("g"));
+		
+		System.out.println(bst.get("h"));
 		
 	}
 
