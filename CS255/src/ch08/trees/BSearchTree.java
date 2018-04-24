@@ -70,8 +70,9 @@ public class BSearchTree<T> implements BSTInterface {
 		}
 	}
 	
-	private void removeNode(BSTNode<T> tree) {
+	private BSTNode<T> removeNode(BSTNode<T> tree) {
 		
+		return root;
 	}
 
 	@Override
