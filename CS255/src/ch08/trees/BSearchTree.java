@@ -71,6 +71,17 @@ public class BSearchTree<T> implements BSTInterface {
 	}
 	
 	private BSTNode<T> removeNode(BSTNode<T> tree) {
+		T data;
+		if (tree.getLeft() == null)
+			return tree.getRight();
+		if (tree.getRight() == null)
+			return tree.getLeft();
+		else {
+			data = getPredecessor(tree.getLeft());
+			tree.setInfo(data);
+			tree.setLeft(recRemove(data, tree.getLeft()));
+			return tree;
+		}
 		
 		return root;
 	}
